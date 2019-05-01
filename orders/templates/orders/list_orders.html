@@ -1,0 +1,30 @@
+{% extends 'orders/base.html' %}
+{% block title %}{{ block.super }}List orders{% endblock title %}
+
+{% block body %}
+    {% include 'orders/navigation_bar.html' %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Marketplace</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Shipping</th>
+            <th scope="col">Address</th>
+            <th scope="col">LastName</th>
+            <th scope="col">City</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.marketplace }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.shipping }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.last_name }}</td>
+                <td>{{ order.city }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock body %}
