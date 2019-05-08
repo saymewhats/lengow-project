@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-class Order(models.Model):
 
+class Order(models.Model):
     marketplace = models.CharField(max_length=50)
     amount = models.DecimalField(max_digits=5, decimal_places=2)
     shipping = models.DecimalField(max_digits=5, decimal_places=2)

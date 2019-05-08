@@ -3,6 +3,12 @@
 
 {% block body %}
     {% include 'orders/navigation_bar.html' %}
+
+    <form action="{% url 'list_order_filter' %}" method="post" class="form-inline md-form mr-auto mb-4">
+        {% csrf_token %}
+        {{ form_filter }}
+        <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+    </form>
     <table class="table">
         <thead>
         <tr>
@@ -16,15 +22,26 @@
         </thead>
         <tbody>
         {% for order in orders %}
-            <tr>
-                <td>{{ order.marketplace }}</td>
-                <td>{{ order.amount }}</td>
-                <td>{{ order.shipping }}</td>
-                <td>{{ order.address }}</td>
-                <td>{{ order.last_name }}</td>
-                <td>{{ order.city }}</td>
-            </tr>
+            <a href="lol.com">
+                <tr>
+                    <td>{{ order.marketplace }}</td>
+                    <td>{{ order.amount }}</td>
+                    <td>{{ order.shipping }}</td>
+                    <td>{{ order.address }}</td>
+                    <td>{{ order.last_name }}</td>
+                    <td>{{ order.city }}</td>
+                    <td>
+                        <a href="{% url 'get_order' order.pk %}">
+                            <button type="button" class="btn btn-light">Edit</button>
+                        </a>
+                        <a href="{% url 'del_order' order.pk %}">
+                            <button type="button" class="btn btn-light">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+            </a>
         {% endfor %}
         </tbody>
     </table>
+    <a href="{% url 'add_order' %}"><button type="button" class="btn btn-dark" >Add order</button></a>
 {% endblock body %}

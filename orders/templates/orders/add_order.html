@@ -1,0 +1,14 @@
+{% extends 'orders/base.html' %}
+{% block title %}{{ block.super }}Order{% endblock title %}
+{% load static %}
+
+{% block body %}
+    {% include 'orders/navigation_bar.html' %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <table class="table">
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock body %}
